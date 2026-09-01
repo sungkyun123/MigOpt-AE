@@ -21,13 +21,13 @@ The paper that introduces MigOpt is currently under submission to
 ## Implementation Overview
 
 MigOpt is implemented in **`migsim`** (`simulator/`), the simulator used in
-the paper: it builds the MCMF graph over a trace, computes a per-phase
-placement **schedule**, and also contains the AutoTiering/MTM implementations
-used in the paper for Fig. 4 and the analysis data behind Fig. 5–7 and Fig. 9.
-The comparison itself is done by **`polsim`** (`policy-sim/`), a unified
-evaluator that replays a trace under `auto` (AutoTiering), `mtm` (MTM), and
+the paper: it builds the MCMF graph over a trace, and computes a per-phase
+placement **schedule**. The schedule is then replayed through 
+**`polsim`** (`policy-sim/`), a unified evaluator that replays a trace
+under `auto` (AutoTiering), `mtm` (MTM), and
 `migopt` (the schedule computed by `migsim`), measuring all three in the
-same way.
+same way. All data in the paper for Fig. 4 and the analysis data behind Fig. 5–7 and Fig. 9
+are collected through `polsim`.
 
 All techniques run on the same simulated four-tier system: T0 local DRAM /
 T1 remote DRAM / T2 local PMEM / T3 remote PMEM with capacity ratio 1:1:4:4
@@ -58,9 +58,6 @@ The hardware requirements for executing the MigOpt artifact are as follows.
 - **Toolchain**: `g++` with C++17, `cmake` ≥ 3.12
 - **Libraries**: `libconfig-dev`
 - **Figures**: `python3` with `matplotlib` (only for `make_figures.sh`)
-
-To run the MigOpt artifact, your environment must support **g++**, **cmake**,
-and **libconfig**.
 
 The setup process for these components is described below.
 
