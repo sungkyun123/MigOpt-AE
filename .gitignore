@@ -1,0 +1,7 @@
+results/
+traces/*.converted
+policy-sim/polsim
+policy-sim/convert_trace
+simulator/build/
+__pycache__/
+*.pyc
